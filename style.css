@@ -1,0 +1,52 @@
+body {
+  min-height: 100vh;
+  font-family: "Tajawal", sans-serif;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px 1fr;
+  grid-template-areas:
+    "header"
+    "main";
+}
+
+.header {
+  grid-area: header;
+  display: grid;
+  place-items: center;
+  background-color: #b9ceeb;
+  min-width: 100%;
+}
+
+.header h2 {
+  font-size: 32px;
+}
+
+.main {
+  grid-area: main;
+  background-color: #87a8d0;
+  padding: 50px;
+}
+
+.main .bookcase {
+  background-color: #deecfc;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  min-height: 95%;
+  min-width: 85%;
+  padding: 30px;
+  gap: 50px;
+}
+
+.book {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #f7f7f8;
+  height: 35%;
+  width: 10%;
+  border-radius: 25px;
+  font-size: 16px;
+}
