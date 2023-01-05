@@ -26,7 +26,14 @@ function addBookToLibrary(title, author, pages, read) {
 addBookToLibrary("moses", "King David", 888, true);
 addBookToLibrary("Starships and their inventors", "jodissius", 1829, true);
 
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+  }
+}
+
 function displayBook(obj) {
+  removeAllChildNodes(bookcase);
   for (const book of obj) {
     const disp = document.createElement('div');
     disp.classList.add('book');
