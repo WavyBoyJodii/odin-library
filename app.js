@@ -32,6 +32,12 @@ function removeAllChildNodes(parent) {
   }
 }
 
+function removeBook(e) {
+  let index = myLibrary.findIndex(books => books.title === this.title);
+  myLibrary.splice(index, 1);
+  displayBook(myLibrary);
+  }
+
 function displayBook(obj) {
   removeAllChildNodes(bookcase);
   for (const book of obj) {
@@ -50,6 +56,11 @@ function displayBook(obj) {
       disp.appendChild(page);
       }
     bookcase.appendChild(disp);
+    const removeButton = document.createElement('button');
+    removeButton.classList.add('removeButton');
+    removeButton.textContent = 'Delete';
+    removeButton.addEventListener('click', removeBook, false);
+    disp.appendChild(removeButton);
     }
   }
 
@@ -102,6 +113,13 @@ function displayBook(obj) {
     
     const formButton = document.createElement('button');
     formButton.textContent = 'Submit';
+    formButton.addEventListener('click', submitToLibrary, false);
+  
+    function submitToLibrary(event) {
+      event.preventDefault();
+      addBookToLibrary(title.value, author.value, pages.value, read.value);
+      displayBook(myLibrary);
+      }
     
     form.append(titleLabel, title, authorLabel, author, pagesLabel, pages, noReadLabel, noRead,
     readLabel, read, formButton);
