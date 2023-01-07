@@ -119,7 +119,7 @@ function createBookForm() {
   noRead.setAttribute('type', 'radio');
   noRead.setAttribute('id', 'noRead');
   noRead.setAttribute('name', 'read');
-  noRead.setAttribute('value', 'false');
+  noRead.setAttribute('value', false);
     
   const readLabel = document.createElement('label');
   readLabel.setAttribute('for', 'read');
@@ -128,15 +128,25 @@ function createBookForm() {
   read.setAttribute('type', 'radio');
   read.setAttribute('id', 'read');
   read.setAttribute('name', 'read');
-  read.setAttribute('value', 'true');
+  read.setAttribute('value', true);
     
   const formButton = document.createElement('button');
   formButton.textContent = 'Submit';
   formButton.addEventListener('click', submitToLibrary, false);
+  const readValue = function displayRadioValue() {
+    let ele = document.getElementsByName('read');
+      
+    for(i = 0; i < ele.length; i++) {
+        if(ele[i].checked) {
+        let answer = (ele[i].value === 'true');
+        return answer
+    }
+  }
+}
   
   function submitToLibrary(event) {
     event.preventDefault();
-    addBookToLibrary(title.value, author.value, pages.value, read.value);
+    addBookToLibrary(title.value, author.value, pages.value, readValue() );
     displayBook(myLibrary);
     }
     
