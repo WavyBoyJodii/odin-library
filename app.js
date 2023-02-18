@@ -5,17 +5,30 @@ const addBookButton = document.getElementById('newBook');
 
 addBookButton.addEventListener('click', () => createBookForm());
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-}
+// function Book(title, author, pages, read) {
+//   this.title = title;
+//   this.author = author;
+//   this.pages = pages;
+//   this.read = read;
+// }
 
-Book.prototype.changeRead = function() {
-  let knowledge = this.read === true ? false : true;
-  this.read = knowledge;
- };
+// Book.prototype.changeRead = function() {
+//   let knowledge = this.read === true ? false : true;
+//   this.read = knowledge;
+//  };
+
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+  changeRead() {
+    let knowledge = this.read === true ? false : true;
+    this.read = knowledge;
+  }
+}
 
 function addBookToLibrary(title, author, pages, read) {
   const myBook = new Book(title, author, pages, read);
